@@ -29,8 +29,8 @@
                 <h2 class="text-2xl font-bold">Evaluasi 1 Bulan (Full Desember 2025)</h2>
             </div>
 
-            <!-- Summary Cards 1 Bulan -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Summary Cards 1 Bulan (Baris 1: Pemenang) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-indigo-500">
                     <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Model Terbaik</h3>
                     <p id="winner-name-bulan" class="text-3xl font-bold text-indigo-600">-</p>
@@ -45,6 +45,36 @@
                     <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Skor MAPE Terbaik</h3>
                     <p id="winner-mape-bulan" class="text-3xl font-bold text-slate-800">-</p>
                     <p class="text-slate-400 text-xs mt-2">Mean Absolute Percentage Error</p>
+                </div>
+            </div>
+
+            <!-- Summary Cards 1 Bulan (Baris 2: Komparasi Lengkap) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-4 border-b pb-2">Akurasi Arah (MDA)</h3>
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/2 pr-4 border-r border-slate-100">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL LSTM</p>
+                            <p id="mda-lstm-bulan" class="text-2xl font-bold text-amber-500">-</p>
+                        </div>
+                        <div class="w-1/2 pl-4 text-right">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL GRU</p>
+                            <p id="mda-gru-bulan" class="text-2xl font-bold text-red-500">-</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-4 border-b pb-2">Waktu Komputasi (Training)</h3>
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/2 pr-4 border-r border-slate-100">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL LSTM</p>
+                            <p id="waktu-lstm-bulan" class="text-2xl font-bold text-amber-500">-</p>
+                        </div>
+                        <div class="w-1/2 pl-4 text-right">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL GRU</p>
+                            <p id="waktu-gru-bulan" class="text-2xl font-bold text-red-500">-</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -85,8 +115,8 @@
                 <h2 class="text-2xl font-bold">Evaluasi 1 Minggu (Awal Desember 2025)</h2>
             </div>
 
-            <!-- Summary Cards 1 Minggu -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Summary Cards 1 Minggu (Baris 1: Pemenang) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-teal-500">
                     <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Model Terbaik</h3>
                     <p id="winner-name-minggu" class="text-3xl font-bold text-teal-600">-</p>
@@ -101,6 +131,36 @@
                     <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Skor MAPE Terbaik</h3>
                     <p id="winner-mape-minggu" class="text-3xl font-bold text-slate-800">-</p>
                     <p class="text-slate-400 text-xs mt-2">Mean Absolute Percentage Error</p>
+                </div>
+            </div>
+
+            <!-- Summary Cards 1 Minggu (Baris 2: Komparasi Lengkap) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-4 border-b pb-2">Akurasi Arah (MDA)</h3>
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/2 pr-4 border-r border-slate-100">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL LSTM</p>
+                            <p id="mda-lstm-minggu" class="text-2xl font-bold text-amber-500">-</p>
+                        </div>
+                        <div class="w-1/2 pl-4 text-right">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL GRU</p>
+                            <p id="mda-gru-minggu" class="text-2xl font-bold text-red-500">-</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-4 border-b pb-2">Waktu Komputasi (Training)</h3>
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/2 pr-4 border-r border-slate-100">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL LSTM</p>
+                            <p id="waktu-lstm-minggu" class="text-2xl font-bold text-amber-500">-</p>
+                        </div>
+                        <div class="w-1/2 pl-4 text-right">
+                            <p class="text-xs text-slate-400 font-bold mb-1">MODEL GRU</p>
+                            <p id="waktu-gru-minggu" class="text-2xl font-bold text-red-500">-</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -142,17 +202,29 @@
                 // 1. Dapatkan Model Pemenang
                 const winner = data.metadata.pemenang;
                 const winnerData = data.metadata.evaluasi[winner];
+                
+                // Ambil data evaluasi lengkap
+                const lstmDataEval = data.metadata.evaluasi.LSTM;
+                const gruDataEval = data.metadata.evaluasi.GRU;
 
-                // 2. Update Cards
+                // 2. Update Summary Cards Utama (Pemenang)
                 document.getElementById(`winner-name-${prefix}`).innerText = winner;
                 document.getElementById(`winner-rmse-${prefix}`).innerText = winnerData.RMSE.toLocaleString('id-ID');
                 document.getElementById(`winner-mape-${prefix}`).innerText = winnerData.MAPE.toFixed(2) + '%';
 
-                // 3. Render Chart
+                // 3. Update Summary Cards Komparasi Baru (MDA & Waktu)
+                // Pake logic fallback (|| 0) jaga-jaga kalo JSON lu belum 100% sinkron
+                document.getElementById(`mda-lstm-${prefix}`).innerText = (lstmDataEval.MDA_Persen || 0).toFixed(2) + '%';
+                document.getElementById(`mda-gru-${prefix}`).innerText = (gruDataEval.MDA_Persen || 0).toFixed(2) + '%';
+                
+                document.getElementById(`waktu-lstm-${prefix}`).innerText = (lstmDataEval.Waktu_Detik || 0).toFixed(1) + ' dtk';
+                document.getElementById(`waktu-gru-${prefix}`).innerText = (gruDataEval.Waktu_Detik || 0).toFixed(1) + ' dtk';
+
+                // 4. Render Chart
                 const labels = data.data_harian.map(item => item.tanggal);
                 const actualData = data.data_harian.map(item => item.harga_aktual);
-                const lstmData = data.data_harian.map(item => item.prediksi_lstm);
-                const gruData = data.data_harian.map(item => item.prediksi_gru);
+                const lstmDataLine = data.data_harian.map(item => item.prediksi_lstm);
+                const gruDataLine = data.data_harian.map(item => item.prediksi_gru);
 
                 const ctx = document.getElementById(`chart-${prefix}`).getContext('2d');
                 new Chart(ctx, {
@@ -171,7 +243,7 @@
                             },
                             {
                                 label: 'Prediksi LSTM',
-                                data: lstmData,
+                                data: lstmDataLine,
                                 borderColor: '#f59e0b',
                                 borderDash: [5, 5],
                                 borderWidth: 2,
@@ -180,7 +252,7 @@
                             },
                             {
                                 label: 'Prediksi GRU',
-                                data: gruData,
+                                data: gruDataLine,
                                 borderColor: '#ef4444',
                                 borderDash: [5, 5],
                                 borderWidth: 2,
@@ -203,7 +275,7 @@
                     }
                 });
 
-                // 4. Update Tabel
+                // 5. Update Tabel Data Harian
                 const tableBody = document.getElementById(`table-${prefix}`);
                 data.data_harian.forEach(item => {
                     const tebakanTerbaik = winner === 'LSTM' ? item.prediksi_lstm : item.prediksi_gru;
@@ -224,7 +296,7 @@
 
             } catch (error) {
                 console.error(`Error loading JSON data for ${prefix}:`, error);
-                document.getElementById(`table-${prefix}`).innerHTML = `<tr><td colspan="5" class="text-center text-red-500 py-4">Gagal memuat file JSON untuk evaluasi ini.</td></tr>`;
+                document.getElementById(`table-${prefix}`).innerHTML = `<tr><td colspan="5" class="text-center text-red-500 py-4">Gagal memuat file JSON untuk evaluasi ini. Pastikan file JSON sudah diupdate.</td></tr>`;
             }
         }
 
