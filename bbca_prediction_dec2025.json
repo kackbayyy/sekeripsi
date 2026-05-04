@@ -2,138 +2,142 @@
     "metadata": {
         "saham": "BBCA.JK",
         "bulan_pengujian": "Desember 2025",
+        "pemenang": "GRU",
         "evaluasi": {
             "LSTM": {
-                "RMSE": 207.42,
-                "MAPE": 2.32
+                "RMSE": 169.98,
+                "MAPE": 1.82,
+                "MDA_Persen": 36.84,
+                "Waktu_Detik": 69.19
             },
             "GRU": {
-                "RMSE": 148.43,
-                "MAPE": 1.59
+                "RMSE": 154.49,
+                "MAPE": 1.63,
+                "MDA_Persen": 52.63,
+                "Waktu_Detik": 147.26
             }
-        },
-        "pemenang": "GRU"
+        }
     },
     "data_harian": [
         {
             "tanggal": "2025-12-01",
             "harga_aktual": 7995.0,
-            "prediksi_lstm": 8026.0,
-            "prediksi_gru": 7965.0
+            "prediksi_lstm": 8006.0,
+            "prediksi_gru": 7973.0
         },
         {
             "tanggal": "2025-12-02",
             "harga_aktual": 7971.0,
-            "prediksi_lstm": 8016.0,
-            "prediksi_gru": 7950.0
+            "prediksi_lstm": 7995.0,
+            "prediksi_gru": 7959.0
         },
         {
             "tanggal": "2025-12-03",
             "harga_aktual": 7952.0,
-            "prediksi_lstm": 8009.0,
-            "prediksi_gru": 7943.0
+            "prediksi_lstm": 7985.0,
+            "prediksi_gru": 7951.0
         },
         {
             "tanggal": "2025-12-04",
             "harga_aktual": 7880.0,
-            "prediksi_lstm": 8003.0,
-            "prediksi_gru": 7938.0
+            "prediksi_lstm": 7977.0,
+            "prediksi_gru": 7946.0
         },
         {
             "tanggal": "2025-12-05",
             "harga_aktual": 7952.0,
-            "prediksi_lstm": 7998.0,
-            "prediksi_gru": 7934.0
+            "prediksi_lstm": 7970.0,
+            "prediksi_gru": 7942.0
         },
         {
             "tanggal": "2025-12-08",
             "harga_aktual": 7952.0,
-            "prediksi_lstm": 7994.0,
-            "prediksi_gru": 7930.0
+            "prediksi_lstm": 7964.0,
+            "prediksi_gru": 7937.0
         },
         {
             "tanggal": "2025-12-09",
             "harga_aktual": 7760.0,
-            "prediksi_lstm": 7991.0,
-            "prediksi_gru": 7925.0
+            "prediksi_lstm": 7958.0,
+            "prediksi_gru": 7933.0
         },
         {
             "tanggal": "2025-12-10",
             "harga_aktual": 7736.0,
-            "prediksi_lstm": 7988.0,
-            "prediksi_gru": 7921.0
+            "prediksi_lstm": 7953.0,
+            "prediksi_gru": 7929.0
         },
         {
             "tanggal": "2025-12-11",
             "harga_aktual": 7664.0,
-            "prediksi_lstm": 7985.0,
-            "prediksi_gru": 7917.0
+            "prediksi_lstm": 7948.0,
+            "prediksi_gru": 7925.0
         },
         {
             "tanggal": "2025-12-12",
             "harga_aktual": 7664.0,
-            "prediksi_lstm": 7982.0,
-            "prediksi_gru": 7913.0
+            "prediksi_lstm": 7943.0,
+            "prediksi_gru": 7921.0
         },
         {
             "tanggal": "2025-12-15",
             "harga_aktual": 7952.0,
-            "prediksi_lstm": 7979.0,
-            "prediksi_gru": 7909.0
+            "prediksi_lstm": 7938.0,
+            "prediksi_gru": 7917.0
         },
         {
             "tanggal": "2025-12-16",
             "harga_aktual": 7736.0,
-            "prediksi_lstm": 7977.0,
-            "prediksi_gru": 7905.0
+            "prediksi_lstm": 7933.0,
+            "prediksi_gru": 7913.0
         },
         {
             "tanggal": "2025-12-17",
             "harga_aktual": 7688.0,
-            "prediksi_lstm": 7974.0,
-            "prediksi_gru": 7901.0
+            "prediksi_lstm": 7929.0,
+            "prediksi_gru": 7910.0
         },
         {
             "tanggal": "2025-12-18",
             "harga_aktual": 7832.0,
-            "prediksi_lstm": 7972.0,
-            "prediksi_gru": 7898.0
+            "prediksi_lstm": 7924.0,
+            "prediksi_gru": 7906.0
         },
         {
             "tanggal": "2025-12-19",
             "harga_aktual": 7712.0,
-            "prediksi_lstm": 7969.0,
-            "prediksi_gru": 7894.0
+            "prediksi_lstm": 7919.0,
+            "prediksi_gru": 7902.0
         },
         {
             "tanggal": "2025-12-22",
             "harga_aktual": 7832.0,
-            "prediksi_lstm": 7967.0,
-            "prediksi_gru": 7890.0
+            "prediksi_lstm": 7915.0,
+            "prediksi_gru": 7898.0
         },
         {
             "tanggal": "2025-12-23",
             "harga_aktual": 7688.0,
-            "prediksi_lstm": 7964.0,
-            "prediksi_gru": 7886.0
+            "prediksi_lstm": 7910.0,
+            "prediksi_gru": 7894.0
         },
         {
             "tanggal": "2025-12-24",
             "harga_aktual": 7688.0,
-            "prediksi_lstm": 7962.0,
-            "prediksi_gru": 7882.0
+            "prediksi_lstm": 7906.0,
+            "prediksi_gru": 7890.0
         },
         {
             "tanggal": "2025-12-29",
             "harga_aktual": 7688.0,
-            "prediksi_lstm": 7959.0,
-            "prediksi_gru": 7878.0
+            "prediksi_lstm": 7901.0,
+            "prediksi_gru": 7887.0
         },
         {
             "tanggal": "2025-12-30",
             "harga_aktual": 7736.0,
-            "prediksi_lstm": 7957.0,
-            "prediksi_gru": 7874.0
+            "prediksi_lstm": 7897.0,
+            "prediksi_gru": 7883.0
         }
     ]
 }
