@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Saham BBCA - LSTM vs GRU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+        <!-- Header Section -->
+        <header class="mb-10 text-center border-b border-slate-200 pb-8">
+            <h1 class="text-4xl font-bold text-slate-800 mb-2">Dashboard Prediksi Saham BBCA</h1>
+            <p class="text-slate-500 text-lg">Komparasi Kinerja Jangka Menengah & Pendek (LSTM vs GRU)</p>
+            <p class="text-slate-400 text-sm mt-2 font-medium">Dilatih menggunakan data historis: 1 Jan 2020 - 30 Nov 2025</p>
+        </header>
+
+        <!-- ========================================== -->
+        <!-- BAGIAN 1 BULAN -->
+        <!-- ========================================== -->
+        <div class="mb-20">
+            <div class="bg-indigo-600 text-white rounded-t-xl py-3 px-6 shadow-md mb-6">
+                <h2 class="text-2xl font-bold">Evaluasi 1 Bulan (Full Desember 2025)</h2>
+            </div>
+
+            <!-- Summary Cards 1 Bulan -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-indigo-500">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Model Terbaik</h3>
+                    <p id="winner-name-bulan" class="text-3xl font-bold text-indigo-600">-</p>
+                    <p class="text-slate-400 text-xs mt-2">*Berdasarkan Metrik Error Terendah</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Skor RMSE Terbaik</h3>
+                    <p id="winner-rmse-bulan" class="text-3xl font-bold text-slate-800">-</p>
+                    <p class="text-slate-400 text-xs mt-2">Root Mean Square Error</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Skor MAPE Terbaik</h3>
+                    <p id="winner-mape-bulan" class="text-3xl font-bold text-slate-800">-</p>
+                    <p class="text-slate-400 text-xs mt-2">Mean Absolute Percentage Error</p>
+                </div>
+            </div>
+
+            <!-- Chart Section 1 Bulan -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="relative h-[350px]">
+                    <canvas id="chart-bulan"></canvas>
+                </div>
+                <div class="mt-4 text-xs text-slate-500 italic bg-slate-50 p-3 rounded-lg border border-slate-100">
+                    <span class="font-bold">Disclaimer Analitis:</span> Kurva prediksi jangka panjang cenderung melandai akibat efek compounding error pada model univariat.
+                </div>
+            </div>
+
+            <!-- Table Section 1 Bulan -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden h-[400px] overflow-y-auto">
+                <table class="w-full text-left relative">
+                    <thead class="sticky top-0 bg-slate-50 shadow-sm z-10">
+                        <tr class="text-slate-500 text-sm uppercase tracking-wider">
+                            <th class="px-6 py-4 font-semibold">Tanggal</th>
+                            <th class="px-6 py-4 font-semibold">Harga Aktual</th>
+                            <th class="px-6 py-4 font-semibold">Prediksi LSTM</th>
+                            <th class="px-6 py-4 font-semibold">Prediksi GRU</th>
+                            <th class="px-6 py-4 font-semibold text-right">Selisih (Model Terbaik)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-bulan" class="divide-y divide-slate-100">
+                        <!-- Data injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- BAGIAN 1 MINGGU -->
+        <!-- ========================================== -->
+        <div>
+            <div class="bg-teal-600 text-white rounded-t-xl py-3 px-6 shadow-md mb-6">
+                <h2 class="text-2xl font-bold">Evaluasi 1 Minggu (Awal Desember 2025)</h2>
+            </div>
+
+            <!-- Summary Cards 1 Minggu -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-teal-500">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Model Terbaik</h3>
+                    <p id="winner-name-minggu" class="text-3xl font-bold text-teal-600">-</p>
+                    <p class="text-slate-400 text-xs mt-2">*Berdasarkan Metrik Error Terendah</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Skor RMSE Terbaik</h3>
+                    <p id="winner-rmse-minggu" class="text-3xl font-bold text-slate-800">-</p>
+                    <p class="text-slate-400 text-xs mt-2">Root Mean Square Error</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Skor MAPE Terbaik</h3>
+                    <p id="winner-mape-minggu" class="text-3xl font-bold text-slate-800">-</p>
+                    <p class="text-slate-400 text-xs mt-2">Mean Absolute Percentage Error</p>
+                </div>
+            </div>
+
+            <!-- Chart Section 1 Minggu -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="relative h-[350px]">
+                    <canvas id="chart-minggu"></canvas>
+                </div>
+            </div>
+
+            <!-- Table Section 1 Minggu -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 text-slate-500 text-sm uppercase tracking-wider">
+                        <tr>
+                            <th class="px-6 py-4 font-semibold">Tanggal</th>
+                            <th class="px-6 py-4 font-semibold">Harga Aktual</th>
+                            <th class="px-6 py-4 font-semibold">Prediksi LSTM</th>
+                            <th class="px-6 py-4 font-semibold">Prediksi GRU</th>
+                            <th class="px-6 py-4 font-semibold text-right">Selisih (Model Terbaik)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-minggu" class="divide-y divide-slate-100">
+                        <!-- Data injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Fungsi modular biar bisa render dua bagian sekaligus
+        async function renderDashboardSection(jsonFile, prefix) {
+            try {
+                const response = await fetch(jsonFile);
+                const data = await response.json();
+
+                // 1. Dapatkan Model Pemenang
+                const winner = data.metadata.pemenang;
+                const winnerData = data.metadata.evaluasi[winner];
+
+                // 2. Update Cards
+                document.getElementById(`winner-name-${prefix}`).innerText = winner;
+                document.getElementById(`winner-rmse-${prefix}`).innerText = winnerData.RMSE.toLocaleString('id-ID');
+                document.getElementById(`winner-mape-${prefix}`).innerText = winnerData.MAPE.toFixed(2) + '%';
+
+                // 3. Render Chart
+                const labels = data.data_harian.map(item => item.tanggal);
+                const actualData = data.data_harian.map(item => item.harga_aktual);
+                const lstmData = data.data_harian.map(item => item.prediksi_lstm);
+                const gruData = data.data_harian.map(item => item.prediksi_gru);
+
+                const ctx = document.getElementById(`chart-${prefix}`).getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Harga Aktual',
+                                data: actualData,
+                                borderColor: '#10b981',
+                                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Prediksi LSTM',
+                                data: lstmData,
+                                borderColor: '#f59e0b',
+                                borderDash: [5, 5],
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Prediksi GRU',
+                                data: gruData,
+                                borderColor: '#ef4444',
+                                borderDash: [5, 5],
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'top' },
+                            tooltip: { mode: 'index', intersect: false }
+                        },
+                        scales: {
+                            y: { beginAtZero: false, grid: { color: '#f1f5f9' } },
+                            x: { grid: { display: false } }
+                        }
+                    }
+                });
+
+                // 4. Update Tabel
+                const tableBody = document.getElementById(`table-${prefix}`);
+                data.data_harian.forEach(item => {
+                    const tebakanTerbaik = winner === 'LSTM' ? item.prediksi_lstm : item.prediksi_gru;
+                    const selisih = Math.abs(item.harga_aktual - tebakanTerbaik);
+                    const selisihColor = selisih > 100 ? 'text-red-500' : 'text-green-500';
+
+                    const row = `
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-slate-600">${item.tanggal}</td>
+                            <td class="px-6 py-4 font-bold text-slate-800">Rp ${item.harga_aktual.toLocaleString('id-ID')}</td>
+                            <td class="px-6 py-4 text-amber-600 font-medium">Rp ${item.prediksi_lstm.toLocaleString('id-ID')}</td>
+                            <td class="px-6 py-4 text-red-600 font-medium">Rp ${item.prediksi_gru.toLocaleString('id-ID')}</td>
+                            <td class="px-6 py-4 text-right font-bold ${selisihColor}">Rp ${selisih.toLocaleString('id-ID')}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+
+            } catch (error) {
+                console.error(`Error loading JSON data for ${prefix}:`, error);
+                document.getElementById(`table-${prefix}`).innerHTML = `<tr><td colspan="5" class="text-center text-red-500 py-4">Gagal memuat file JSON untuk evaluasi ini.</td></tr>`;
+            }
+        }
+
+        // Panggil fungsi untuk nge-render kedua bagian
+        renderDashboardSection('./bbca_prediction_dec2025.json', 'bulan');
+        renderDashboardSection('./bbca_prediction_1minggu.json', 'minggu');
+    </script>
+</body>
+</html>
